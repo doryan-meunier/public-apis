@@ -1,9 +1,3 @@
-@app.route("/")
-def consignes():
-    return render_template('consignes.html')
-
-
-
 
 from flask import Flask, render_template, jsonify, render_template_string
 from tester.client import APIClient
@@ -12,6 +6,10 @@ from storage import list_runs, save_run
 from datetime import datetime
 
 app = Flask(__name__)
+
+@app.route("/")
+def consignes():
+    return render_template('consignes.html')
 
 
 
