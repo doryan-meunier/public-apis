@@ -42,7 +42,7 @@ def run_tests():
         "tests": results
     }
     save_run(run)
-    return "Run effectué et sauvegardé.<br><a href='/dashboard'>Voir le dashboard</a>"
+    return render_template("run.html", run=run)
 
 @app.route("/dashboard")
 

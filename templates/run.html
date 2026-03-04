@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultat du Run Cat Facts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='run.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Résultat du Run Cat Facts</h1>
+        <div class="run-status">
+            {% if run.summary.passed == 7 %}
+                <span class="status-success">Succès : Tous les tests sont passés !</span>
+            {% else %}
+                <span class="status-fail">Échec : {{ run.summary.passed }}/7 tests passés</span>
+            {% endif %}
+        </div>
+        <div class="run-details">
+            <ul>
+            {% for t in run.tests %}
+                <li class="{{ 'status-success' if t.status == 'PASS' else 'status-fail' }}">{{ t.name }} : {{ t.status }}</li>
+            {% endfor %}
+            </ul>
+            <p>Erreur : {{ '%.2f' % (run.summary.error_rate * 100) }} %</p>
+            <p>Latence moyenne : {{ run.summary.latency_ms_avg }} ms</p>
+            <p>Latence p95 : {{ run.summary.latency_ms_p95 }} ms</p>
+        </div>
+        <div class="button-bar">
+            <a href="/dashboard">Retour au dashboard</a>
+            <a href="/run"><button>Relancer un run</button></a>
+        </div>
+    </div>
+    <div class="footer">TP3 - Automatisation des tests API</div>
+</body>
+</html>
