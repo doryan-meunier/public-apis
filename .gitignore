@@ -1,0 +1,2 @@
+# Ne pas versionner la base de données locale
+runs.db
