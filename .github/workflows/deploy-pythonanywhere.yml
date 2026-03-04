@@ -26,8 +26,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          USER="${{ secrets.PA_USERNAME }}"
-          TOKEN="${{ secrets.PA_TOKEN }}"
+          USER="${{ secrets.PYTHONANYWHERE_USERNAME }}"
+          TOKEN="${{ secrets.PYTHONANYWHERE_API_TOKEN }}"
           TARGET_DIR="${{ secrets.PA_TARGET_DIR }}"
           DOMAIN="${{ secrets.PA_WEBAPP_DOMAIN }}"
 
