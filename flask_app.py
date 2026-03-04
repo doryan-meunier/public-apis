@@ -10,9 +10,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-@app.get("/")
-def consignes():
-    return render_template('consignes.html')
+
 
 @app.route("/run")
 def run_tests():
