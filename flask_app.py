@@ -45,6 +45,28 @@ def run_tests():
     return "Run effectué et sauvegardé.<br><a href='/dashboard'>Voir le dashboard</a>"
 
 @app.route("/dashboard")
+
 def dashboard():
     runs = list_runs()
     return render_template("dashboard.html", runs=runs)
+
+# BONUS : Endpoint /health
+@app.route("/health")
+def health():
+    runs = list_runs(1)
+    if runs:
+        last = runs[0]
+        status = "OK" if last["summary"]["error_rate"] == 0 else "DEGRADED"
+        return jsonify({
+            "status": status,
+            "last_run": last["timestamp"],
+            "error_rate": last["summary"]["error_rate"],
+            "latency_ms_avg": last["summary"]["latency_ms_avg"]
+        })
+    return jsonify({"status": "NO DATA"})
+
+# BONUS : Export JSON de l'historique
+@app.route("/export")
+def export():
+    runs = list_runs(50)
+    return jsonify(runs)
