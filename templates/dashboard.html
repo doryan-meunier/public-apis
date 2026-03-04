@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Dashboard Cat Facts</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
@@ -12,6 +13,9 @@
             <a href="/run"><button>Lancer un run</button></a>
             <a href="/health"><button>Voir l'état de santé (/health)</button></a>
             <a href="/export" download="export.json"><button>Exporter l'historique (/export)</button></a>
+        </div>
+        <div style="max-width:400px;margin:0 auto 32px auto;">
+            <canvas id="runPieChart"></canvas>
         </div>
         <div class="table-container">
     <table>
@@ -44,5 +48,31 @@
     </table>
         </div>
     </div>
+<script>
+    // Prépare les données pour le camembert
+    const runs = {{ runs|tojson }};
+    let success = 0, fail = 0;
+    runs.forEach(r => {
+        if (r.summary.passed == 7) success++;
+        else fail++;
+    });
+    const ctx = document.getElementById('runPieChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Succès', 'Échec'],
+            datasets: [{
+                data: [success, fail],
+                backgroundColor: ['#00b894', '#d63031'],
+            }]
+        },
+        options: {
+            plugins: {
+                legend: { position: 'bottom' },
+                title: { display: true, text: 'Répartition des runs (Succès/Échec)' }
+            }
+        }
+    });
+</script>
 </body>
 </html>
