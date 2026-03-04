@@ -1,0 +1,95 @@
+/* dashboard.css - Style pour le dashboard TP3 */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f5f6fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 32px 40px;
+}
+
+h1 {
+    color: #2d3436;
+    font-size: 2.2em;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.dashboard-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 32px;
+}
+
+.dashboard-buttons button, .dashboard-buttons a {
+    background: #0984e3;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 28px;
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(9,132,227,0.08);
+}
+
+.dashboard-buttons button:hover, .dashboard-buttons a:hover {
+    background: #74b9ff;
+    color: #2d3436;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 24px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+}
+
+thead {
+    background: #dfe6e9;
+}
+
+th, td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid #b2bec3;
+}
+
+th {
+    color: #636e72;
+    font-weight: 600;
+}
+
+tr:hover {
+    background: #f1f2f6;
+}
+
+.status-success {
+    color: #00b894;
+    font-weight: bold;
+}
+
+.status-fail {
+    color: #d63031;
+    font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+    color: #636e72;
+    margin-top: 32px;
+    font-size: 0.95em;
+}

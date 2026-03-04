@@ -3,21 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard Cat Facts</title>
-    <style>
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        th { background: #eee; }
-        .pass { color: green; font-weight: bold; }
-        .fail { color: red; font-weight: bold; }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
 </head>
 <body>
-    <h2>Dashboard Cat Facts — Historique des runs</h2>
-    <p>
-        <a href="/run"><button>Lancer un run</button></a>
-        <a href="/health"><button>Voir l'état de santé (/health)</button></a>
-        <a href="/export" download="export.json"><button>Exporter l'historique (/export)</button></a>
-    </p>
+    <div class="container">
+        <h1>Dashboard Cat Facts — Historique des runs</h1>
+        <div class="dashboard-buttons">
+            <a href="/run"><button>Lancer un run</button></a>
+            <a href="/health"><button>Voir l'état de santé (/health)</button></a>
+            <a href="/export" download="export.json"><button>Exporter l'historique (/export)</button></a>
+        </div>
+        <div class="table-container">
     <table>
         <tr>
             <th>Date/Heure</th>
@@ -46,5 +42,7 @@
         </tr>
         {% endfor %}
     </table>
+        </div>
+    </div>
 </body>
 </html>
