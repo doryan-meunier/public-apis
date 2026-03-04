@@ -1,3 +1,6 @@
+@app.route("/")
+def consignes():
+    return render_template('consignes.html')
 
 
 
