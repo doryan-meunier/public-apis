@@ -55,13 +55,12 @@ def health():
     if runs:
         last = runs[0]
         status = "OK" if last["summary"]["error_rate"] == 0 else "DEGRADED"
-        return jsonify({
-            "status": status,
-            "last_run": last["timestamp"],
-            "error_rate": last["summary"]["error_rate"],
-            "latency_ms_avg": last["summary"]["latency_ms_avg"]
-        })
-    return jsonify({"status": "NO DATA"})
+        return render_template("health.html",
+            status=status,
+            last_run=last["timestamp"],
+            error_rate=last["summary"]["error_rate"],
+            latency_ms_avg=last["summary"]["latency_ms_avg"])
+    return render_template("health.html", status="NO DATA")
 
 # BONUS : Export JSON de l'historique
 @app.route("/export")

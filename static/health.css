@@ -1,0 +1,83 @@
+/* health.css - Style pour la page Health TP3 */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f5f6fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 500px;
+    margin: 60px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 32px 36px;
+}
+
+h1 {
+    color: #00b894;
+    font-size: 2em;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.health-status {
+    font-size: 1.2em;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.status-ok {
+    color: #00b894;
+    font-weight: bold;
+}
+
+.status-degraded {
+    color: #fdcb6e;
+    font-weight: bold;
+}
+
+.status-nodata {
+    color: #636e72;
+    font-weight: bold;
+}
+
+.health-details {
+    background: #dfe6e9;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 24px;
+}
+
+.button-bar {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.button-bar a, .button-bar button {
+    background: #0984e3;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(9,132,227,0.08);
+}
+
+.button-bar a:hover, .button-bar button:hover {
+    background: #74b9ff;
+    color: #2d3436;
+}
+
+.footer {
+    text-align: center;
+    color: #636e72;
+    margin-top: 32px;
+    font-size: 0.95em;
+}

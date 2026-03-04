@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>État de santé Cat Facts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='health.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>État de santé Cat Facts</h1>
+        <div class="health-status">
+            {% if status == "OK" %}
+                <span class="status-ok">Statut : OK</span>
+            {% elif status == "DEGRADED" %}
+                <span class="status-degraded">Statut : Dégradé</span>
+            {% else %}
+                <span class="status-nodata">Aucune donnée disponible</span>
+            {% endif %}
+        </div>
+        {% if status != "NO DATA" %}
+        <div class="health-details">
+            <p>Dernier run : {{ last_run }}</p>
+            <p>Erreur : {{ '%.2f' % (error_rate * 100) }} %</p>
+            <p>Latence moyenne : {{ latency_ms_avg }} ms</p>
+        </div>
+        {% endif %}
+        <div class="button-bar">
+            <a href="/dashboard">Retour au dashboard</a>
+        </div>
+    </div>
+    <div class="footer">TP3 - Automatisation des tests API</div>
+</body>
+</html>
