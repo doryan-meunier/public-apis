@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Cat Facts</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background: #eee; }
+        .pass { color: green; font-weight: bold; }
+        .fail { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Dashboard Cat Facts — Historique des runs</h2>
+    <table>
+        <tr>
+            <th>Date/Heure</th>
+            <th>API</th>
+            <th>Succès</th>
+            <th>Erreur (%)</th>
+            <th>Latence avg (ms)</th>
+            <th>Latence p95 (ms)</th>
+            <th>Détail tests</th>
+        </tr>
+        {% for run in runs %}
+        <tr>
+            <td>{{ run.timestamp }}</td>
+            <td>{{ run.api }}</td>
+            <td class="{{ 'pass' if run.summary.passed == 7 else 'fail' }}">{{ run.summary.passed }}/7</td>
+            <td>{{ '%.2f' % (run.summary.error_rate * 100) }}</td>
+            <td>{{ run.summary.latency_ms_avg }}</td>
+            <td>{{ run.summary.latency_ms_p95 }}</td>
+            <td>
+                <ul>
+                {% for t in run.tests %}
+                    <li class="{{ 'pass' if t.status == 'PASS' else 'fail' }}">{{ t.name }} : {{ t.status }}</li>
+                {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
